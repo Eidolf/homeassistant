@@ -1,0 +1,231 @@
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+homeassistant:
+  ## Zeitzone
+  ###time_zone: Europe/Berlin
+  ## Anpassung
+  customize: !include customize.yaml
+
+frontend:
+  themes: !include_dir_merge_named themes
+  extra_module_url:
+    - /local/community/custom-brand-icons/custom-brand-icons.js
+
+# Text to speech
+tts:
+  - platform: google_translate
+    service_name: google_say
+
+# Includes
+# Gruppen
+group: !include groups.yaml
+# Automationen
+automation: !include automations.yaml
+# Skripte
+script: !include scripts.yaml
+# Szenen
+scene: !include scenes.yaml
+# Datenbank
+influxdb: !include database.yaml
+# Sensoren
+sensor: !include sensor.yaml
+# Binary Sensoren
+binary_sensor: !include binary-sensor.yaml
+# Tarif Zähler
+utility_meter: !include utility-meter.yaml
+# Templates
+template: !include template.yaml
+
+http:
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem 
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 192.168.2.252
+
+# Benachrichtigung
+## Rocketchat
+notify:
+  - platform: rocketchat
+    name: RC_Homeassistant
+    url: !secret rocketchat_url
+    username: homeassistant
+    password: !secret rocketchat_password
+    room: homeassistant
+
+  ## SMTP
+  - name: er_mailserver
+    platform: smtp
+    sender: !secret smtp_sender
+    recipient: !secret smtp_receiver
+    server: !secret smtp_server
+    port: 25
+    encryption: none
+    sender_name: ER Home Assistant
+
+  ## Benachrichtigungsgruppen
+  ### S und A Android Smartphones
+  - name: !secret sua_name
+    platform: group
+    services:
+      - service: !secret a_smartphone
+      - service: !secret s_smartphone
+  - name: !secret a_name
+    platform: group
+    services:
+      - service: !secret a_smartphone
+  - name: !secret s_name
+    platform: group
+    services:
+      - service: !secret s_smartphone
+
+# Persistent Timer
+input_text:
+  timers_active:
+    name: Active Timers
+    max: 255
+  timers_paused:
+    name: Paused Timers
+    max: 255
+
+# Neato
+neato:
+  client_id: !secret neato_id
+  client_secret: !secret neato_secret
+
+# Hue Powercalc Zähler erstellen
+powercalc:
+  create_utility_meters: true
+
+# Mediengeräte
+## Yamaha RX685
+media_player:
+  - platform: yamaha
+    host: !secret RX685_IP
+    source_names:
+      HDMI4: "Shield"
+    source_ignore:
+      - "AUX"
+      - "HDMI6"
+    zone_names:
+      Main_Zone: "Wohnzimmer"
+    zone_ignore:
+      - "Zone_2"
+  ## Emby
+  - platform: emby
+    host: !secret emby_host
+    ssl: true
+    api_key: !secret emby_secret
+
+# Kameras
+## Galaxy S5 Frontkamera
+camera:
+  ##  - platform: mjpeg
+  ##    mjpeg_url: 'http://IP-Adresse:2971/camera/stream'
+  ##    name: WallPanel Camera
+  ## Meteogram
+  - platform: generic
+    name: Meteogram
+    still_image_url: !secret meteogram_url
+  - platform: local_file
+    name: Meteogram_2h
+    file_path: "/config/www/meteogram/Meteogram.jpg"
+
+# Finanzen
+## Yahoo
+yahoofinance:
+  symbols:
+    - VEVE.L
+    - H4ZJ.DE
+    - VFEM.L
+    - IASP.AS
+    - IPRP.L
+    - C090.DE
+    - CBACOM.SW
+    - XDDX.DE
+    - XDWL.SW
+    - RBTX.L
+    - EXV3.DE
+    - IHPCF
+  scan_interval:
+    hours: 4
+  show_trending_icon: true
+
+## Wecker
+#Script Aufrufe
+## Posteingang IMAP Postfach löschen
+shell_command:
+  emptyinbox: python /config/www/python-script/emptyinbox/emptyinbox.py
+
+#Abfall Kalender
+waste_collection_schedule:
+  sources:
+    - name: ics
+      args:
+        url: !secret awista_url
+      customize:
+        - type: Restmuelltonne
+          alias: Restmüll
+          icon: mdi:trash-can
+        - type: Biotonne
+          alias: Bioabfall
+          icon: mdi:flower-outline
+        - type: Papiertonne
+          alias: Papierabfall
+          icon: mdi:note
+        - type: Gelber Sack
+          icon: mdi:recycle
+
+#Wake on Lan
+wake_on_lan:
+switch:
+  - platform: wake_on_lan
+    mac: !secret PC02_MAC
+    name: !secret PC02_Name
+    host: !secret PC02_IP
+
+# Delete Function
+delete:
+
+# Set State function
+python_script:
+
+# Custom Config Card
+config_editor:
+
+# Home Connect
+home_connect:
+  client_id: !secret home_connect_id
+  client_secret: !secret home_connect_pw
+
+# Homematic CCU3
+homematic:
+  interfaces:
+    rf:
+      host: !secret ccu3_host
+      resolvenames: json
+      username: !secret ccu3_username
+      password: !secret ccu3_password
+    wired:
+      host: !secret ccu3_host
+      port: 2000
+      resolvenames: json
+      username: !secret ccu3_username
+      password: !secret ccu3_password
+    ip:
+      host: !secret ccu3_host
+      port: 2010
+    groups:
+      host: !secret ccu3_host
+      port: 9292
+      resolvenames: json
+      username: !secret ccu3_username
+      password: !secret ccu3_password
+      path: /groups
+  hosts:
+    ccu3:
+      host: !secret ccu3_host
+      port: 2001
+      username: !secret ccu3_username
+      password: !secret ccu3_password
