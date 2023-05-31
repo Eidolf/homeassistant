@@ -157,6 +157,7 @@ yahoofinance:
 ## Posteingang IMAP Postfach löschen
 shell_command:
   emptyinbox: python /config/www/python-script/emptyinbox/emptyinbox.py
+  gitupload: /bin/bash pushupdates.sh
 
 #Abfall Kalender
 waste_collection_schedule:
