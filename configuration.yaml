@@ -95,8 +95,7 @@ neato:
   client_secret: !secret neato_secret
 
 # Hue Powercalc Zähler erstellen
-powercalc:
-  create_utility_meters: true
+powercalc: !include powercalc.yaml
 
 # Mediengeräte
 ## Yamaha RX685
@@ -157,6 +156,7 @@ yahoofinance:
 ## Posteingang IMAP Postfach löschen
 shell_command:
   emptyinbox: python /config/www/python-script/emptyinbox/emptyinbox.py
+## Upload Script zu GitHub
   gitupload: /bin/bash pushupdates.sh
 
 #Abfall Kalender
