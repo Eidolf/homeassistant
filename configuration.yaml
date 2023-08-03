@@ -123,10 +123,7 @@ camera:
   ##  - platform: mjpeg
   ##    mjpeg_url: 'http://IP-Adresse:2971/camera/stream'
   ##    name: WallPanel Camera
-  ## Meteogram
-  - platform: generic
-    name: Meteogram
-    still_image_url: !secret meteogram_url
+
   - platform: local_file
     name: Meteogram_2h
     file_path: "/config/www/meteogram/Meteogram.jpg"
