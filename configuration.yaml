@@ -115,17 +115,6 @@ media_player:
     ssl: true
     api_key: !secret emby_secret
 
-# Kameras
-## Galaxy S5 Frontkamera
-camera:
-  ##  - platform: mjpeg
-  ##    mjpeg_url: 'http://IP-Adresse:2971/camera/stream'
-  ##    name: WallPanel Camera
-
-  - platform: local_file
-    name: Meteogram_2h
-    file_path: "/config/www/meteogram/Meteogram.jpg"
-
 # Finanzen
 ## Yahoo
 yahoofinance:
