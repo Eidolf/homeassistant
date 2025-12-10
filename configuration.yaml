@@ -32,8 +32,6 @@ scene: !include scenes.yaml
 influxdb: !include database.yaml
 # Sensoren
 sensor: !include sensor.yaml
-# Binary Sensoren
-binary_sensor: !include binary-sensor.yaml
 # Tarif Zähler
 utility_meter: !include utility-meter.yaml
 # Templates
