@@ -176,7 +176,7 @@ python_script:
 
 # Custom Config Card
 config_editor:
-
+ 
 # Homematic CCU3
 homematic:
   interfaces:
