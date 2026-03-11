@@ -29,7 +29,7 @@ script: !include scripts.yaml
 # Szenen
 scene: !include scenes.yaml
 # Datenbank
-influxdb: !include database.yaml
+# influxdb: !include database.yaml
 # Sensoren
 sensor: !include sensor.yaml
 # Tarif Zähler
