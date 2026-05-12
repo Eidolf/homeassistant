@@ -141,25 +141,6 @@ shell_command:
 ## Upload Script zu GitHub
   gitupload: /bin/bash pushupdates.sh
 
-#Abfall Kalender
-waste_collection_schedule:
-  sources:
-    - name: ics
-      args:
-        url: !secret awista_url
-      customize:
-        - type: Restmuelltonne
-          alias: Restmüll
-          icon: mdi:trash-can
-        - type: Biotonne
-          alias: Bioabfall
-          icon: mdi:flower-outline
-        - type: Papiertonne
-          alias: Papierabfall
-          icon: mdi:note
-        - type: Gelber Sack
-          icon: mdi:recycle
-
 #Wake on Lan
 wake_on_lan:
 switch:
