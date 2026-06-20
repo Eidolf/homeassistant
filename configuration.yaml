@@ -115,23 +115,23 @@ media_player:
 
 # Finanzen
 ## Yahoo
-yahoofinance:
-  symbols:
-    - VEVE.L
-    - H4ZJ.DE
-    - VFEM.L
-    - IASP.AS
-    - IPRP.L
-    - C090.DE
-    - CBACOM.SW
-    - XDDX.DE
-    - XDWL.SW
-    - RBTX.L
-    - EXV3.DE
-    - IHPCF
-  scan_interval:
-    hours: 4
-  show_trending_icon: true
+#yahoofinance:
+#  symbols:
+#    - VEVE.L
+#    - H4ZJ.DE
+#    - VFEM.L
+#    - IASP.AS
+#    - IPRP.L
+#    - C090.DE
+#    - CBACOM.SW
+#    - XDDX.DE
+#    - XDWL.SW
+#    - RBTX.L
+#    - EXV3.DE
+#    - IHPCF
+#  scan_interval:
+#    hours: 4
+#  show_trending_icon: true
 
 ## Wecker
 #Script Aufrufe
