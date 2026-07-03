@@ -56,14 +56,14 @@ notify:
     room: homeassistant
 
   ## SMTP
-  - name: er_mailserver
-    platform: smtp
-    sender: !secret smtp_sender
-    recipient: !secret smtp_receiver
-    server: !secret smtp_server
-    port: 25
-    encryption: none
-    sender_name: ER Home Assistant
+  #- name: er_mailserver
+  #  platform: smtp
+  #  sender: !secret smtp_sender
+  #  recipient: !secret smtp_receiver
+  #  server: !secret smtp_server
+  #  port: 25
+  #  encryption: none
+  #  sender_name: ER Home Assistant
 
   ## Benachrichtigungsgruppen
   ### S und A Android Smartphones
