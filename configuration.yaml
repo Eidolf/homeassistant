@@ -159,32 +159,32 @@ python_script:
 config_editor:
  
 # Homematic CCU3
-homematic:
-  interfaces:
-    rf:
-      host: !secret ccu3_host
-      resolvenames: json
-      username: !secret ccu3_username
-      password: !secret ccu3_password
-    wired:
-      host: !secret ccu3_host
-      port: 2000
-      resolvenames: json
-      username: !secret ccu3_username
-      password: !secret ccu3_password
-    ip:
-      host: !secret ccu3_host
-      port: 2010
-    groups:
-      host: !secret ccu3_host
-      port: 9292
-      resolvenames: json
-      username: !secret ccu3_username
-      password: !secret ccu3_password
-      path: /groups
-  hosts:
-    ccu3:
-      host: !secret ccu3_host
-      port: 2001
-      username: !secret ccu3_username
-      password: !secret ccu3_password
+#homematic:
+#  interfaces:
+#    rf:
+#      host: !secret ccu3_host
+#      resolvenames: json
+#      username: !secret ccu3_username
+#      password: !secret ccu3_password
+#    wired:
+#      host: !secret ccu3_host
+#      port: 2000
+#      resolvenames: json
+#      username: !secret ccu3_username
+#      password: !secret ccu3_password
+#    ip:
+#      host: !secret ccu3_host
+#      port: 2010
+#    groups:
+#      host: !secret ccu3_host
+#      port: 9292
+#      resolvenames: json
+#      username: !secret ccu3_username
+#      password: !secret ccu3_password
+#      path: /groups
+#  hosts:
+#    ccu3:
+#      host: !secret ccu3_host
+#      port: 2001
+#      username: !secret ccu3_username
+#      password: !secret ccu3_password
