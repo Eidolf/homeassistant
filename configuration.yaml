@@ -39,7 +39,8 @@ template: !include template.yaml
 
 http:
   ssl_certificate: /ssl/le-fullchain.pem
-  ssl_key: /ssl/le-privkey.pem 
+  ssl_key: /ssl/le-privkey.pem
+  server_port: 443
   use_x_forwarded_for: true
   trusted_proxies:
     - 192.168.2.252
